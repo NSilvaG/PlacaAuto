@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validar</title>
+    <script>
+
+        function Formulario() {
+
+            var txtNombre = document.getElementById('nombre').value;
+            var txtTelefono = document.getElementById('telefono').value;
+            var txtCorreo = document.getElementById('correo').value;
+            var txtPlaca = document.getElementById('placa').value;
+
+            if (txtNombre == null || txtNombre.length == 0 || /^\s+$/.test(txtNombre)) {
+                alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
+                return false;
+            }
+
+            if (txtTelefono == null || txtTelefono.length == 0 || isNaN(txtTelefono)) {
+                alert('ERROR: Debe ingresar un número de teléfono');
+                return false;
+            }
+
+            if (!(/\S+@\S+\.\S+/.test(txtCorreo))) {
+                alert('ERROR: Debe escribir un correo válido');
+                return false;
+            }
+
+            if (!(/[A-Z]{3}-\d{3}/.test(txtPlaca))) {
+                alert('ERROR: Debe escribir una placa válida');
+                return false;
+
+            }
+
+            return true;
+        }
+
+    </script>
+</head>
+<body>
+    <form action="" onsubmit="return validarFormulario()">
+        <label for="nombre">
+            <span>Nombre:</span>
+        </label>
+        <input id="nombre" name="nombre" type="text">
+
+        <br><br>
+
+        <label for="telefono">
+            <span>Teléfono:</span>
+        </label>
+        <input id="telefono" name="telefono" type="text">
+
+        <br><br>
+
+        <label for="correo">
+            <span>Correo electrónico:</span>
+        </label>
+        <input id="correo" name="correo" type="text">
+
+        <br><br>
+
+        <label for="placa">
+            <span>Placa (AAA-000):</span>
+        </label>
+        <input id="placa" name="placa" type="text">
+
+        <br><br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+</body>
+</html>
